@@ -2,7 +2,14 @@ language: "en"
 intents:
   MassPlayMediaOnMediaPlayer:
     data:
-
+      # AREA CONTEXT AWARE
+      - sentences:
+          - "<play> {query}; [((with)|(using)) {radio_mode}]"
+        expansion_rules:
+          play: "((play)|(listen to))"
+        requires_context:
+          area:
+            slot: true
       # TARGET AN AREA
       - sentences:
           - "<play> {query};in [the ]<area> [((with)|(using)) {radio_mode}]"
